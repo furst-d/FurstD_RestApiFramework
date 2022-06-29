@@ -1,0 +1,22 @@
+{
+    "name": "furstd/furst-d_rest-api-framework",
+    "description": "REST API framework",
+    "autoload": {
+        "psr-4": {
+            "app\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dominik Furst",
+            "email": "st60987@upce.cz"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "^5.4",
+        "ext-mysqli": "*",
+        "ext-curl": "*",
+        "ext-simplexml": "*",
+        "ext-libxml": "*"
+    }
+}
