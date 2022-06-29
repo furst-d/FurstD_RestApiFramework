@@ -162,7 +162,7 @@ class Router
      */
     private function getCallback(Route $route): callable|bool|array
     {
-        $class = 'app\core\controller\\' . $route->getController()->getClass();
+        $class = 'app\controller\\' . $route->getController()->getClass();
         if(!class_exists($class)) {
             $this->response->setStatusCode(400);
             $this->response->setStatusText("Class '" . $route->getController()->getClass()
