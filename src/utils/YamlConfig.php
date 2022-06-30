@@ -21,13 +21,12 @@ class YamlConfig
      */
     public static function loadFile($fileName): array|false
     {
-        $path = dirname(__FILE__, 6) . '/src/config/' . $fileName;
+        $path = dirname(__FILE__, 6) . '/config/' . $fileName;
         if(!file_exists($path)) {
-            echo "Problém $path";
             Application::$app->getResponse()->setStatusCode(400);
             Application::$app->getResponse()->setStatusText("File $fileName not found");
             return false;
         }
-        return Yaml::parse(file_get_contents(dirname(__FILE__, 6) . '/src/config/' . $fileName));
+        return Yaml::parse(file_get_contents(dirname(__FILE__, 6) . '/config/' . $fileName));
     }
 }
