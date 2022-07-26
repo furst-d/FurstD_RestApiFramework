@@ -337,7 +337,7 @@ class SQLBuilder
                     }
 
                     $sql .= $this->getParamName($whereClause) . " "
-                        . $whereClause->getOperator() . " " . $param . " AND ";
+                        . $whereClause->getOperator() . " '" . $param . "' AND ";
                 } else {
                     return -1;
                 }
