@@ -24,6 +24,7 @@ class Application
     public function __construct()
     {
         self::$app = $this;
+		$this->setHeaders();
         $this->response = new Response();
         $this->request = new Request();
         $this->database = new Database();
@@ -59,6 +60,22 @@ class Application
     {
         return $this->database;
     }
+	
+	/**
+     * Sets the necessary headers to allow access from a client JavaScript application.
+     * If not set, it would be blocked due to CORS policy.
+     *
+     * @return void
+     */
+	private function setHeaders(): void {
+		header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method == "OPTIONS") {
+            die();
+        }
+	}
 
     /**
      * If there is no error initializing the application, it will allow the router to process the request.
